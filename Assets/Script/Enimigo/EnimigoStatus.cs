@@ -11,20 +11,20 @@ public class EnimigoStatus : MonoBehaviour
     public int Vida { get => vida; set => vida = value; }
     public float VelocidadeEnimgo { get => velocidadeEnimgo; set => velocidadeEnimgo = value; }
     private void Awake()
-    {  
+    {
         MakeInstance();
-        dataPlayer =  GameObject.FindGameObjectWithTag("DataPlayer").GetComponent<DataPlayer>();
+        dataPlayer = GameObject.FindGameObjectWithTag("DataPlayer").GetComponent<DataPlayer>();
     }
     void MakeInstance()
     {
-        if (instance ==  null)
+        if (instance == null)
         {
             instance = this;
         }
     }
     public void DecreaseLife(int lifeDescrease)
     {
-        if (vida > 0 )
+        if (vida > 0)
         {
             vida -= lifeDescrease;
         }

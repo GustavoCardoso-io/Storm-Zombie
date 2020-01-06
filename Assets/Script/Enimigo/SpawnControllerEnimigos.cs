@@ -8,19 +8,19 @@ public class SpawnControllerEnimigos : MonoBehaviour
     public int currentEnimigosSpawn = 3;
     public float waitForSpawnWaveEnimies = 5f;
     public float waitForSpawnEnimiesWave = 1f;
-
     void Start()
     {
         StartCoroutine(SpawnController());
     }
-   IEnumerator SpawnController(){   
-    for(int i = 0;  i< currentEnimigosSpawn; i++)
+    IEnumerator SpawnController()
     {
-        Instantiate(EnimigosEasy[Random.Range(0,EnimigosEasy.Length)], transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(waitForSpawnEnimiesWave);
-      }
-      yield return new WaitForSeconds(waitForSpawnWaveEnimies);
-       StartCoroutine(SpawnController());
+        for (int i = 0; i < currentEnimigosSpawn; i++)
+        {
+            Instantiate(EnimigosEasy[Random.Range(0, EnimigosEasy.Length)], transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(waitForSpawnEnimiesWave);
+        }
+        yield return new WaitForSeconds(waitForSpawnWaveEnimies);
+        StartCoroutine(SpawnController());
     }
 
 }

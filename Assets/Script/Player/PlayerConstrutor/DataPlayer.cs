@@ -4,30 +4,25 @@ using UnityEngine.UI;
 namespace PlayerControler
 {
     public class DataPlayer : MonoBehaviour
+    {
+        public Text ScorePointPlayer = null;
+        public Player player;
+
+        private void Awake()
         {
-
-            public Text ScorePointPlayer = null;
-
-
-            public Player player;
-
-            private void Awake() {
-                
-             DataPlayer instance =  this;
-             player =  new Player();
-             SetScorePointPlayer();
-
-            }
-            public void SetPlayerPontos()
-            {
-                this.player.pontosPlayer += 100;            
-            }
-
-            public void SetScorePointPlayer()
-            {
-
-                ScorePointPlayer.text = player.pontosPlayer.ToString();
-
-            }
+            DataPlayer instance = this;
+            player = new Player();
+            SetScorePointPlayer();
         }
+
+        public void SetPlayerPontos()
+        {
+            this.player.pontosPlayer += 100;
+        }
+        
+        public void SetScorePointPlayer()
+        {
+            ScorePointPlayer.text = player.pontosPlayer.ToString();
+        }
+    }
 }
