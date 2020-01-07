@@ -6,7 +6,7 @@ namespace PlayerControler
     public class DataPlayer : MonoBehaviour
     {
         public Text ScorePointPlayer = null;
-        public Player player;
+        public Player player = null;
 
         private void Awake()
         {

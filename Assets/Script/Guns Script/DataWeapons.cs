@@ -6,8 +6,8 @@ namespace Weapons
 {  
     public class DataWeapons : MonoBehaviour
     { 
-        public Weapon[] weapons; 
-        public Weapon weaponAtual;
+        public Weapon[] weapons = null; 
+        public Weapon weaponAtual = null;
          private void Awake()
         {
             weaponAtual = weapons[1];
