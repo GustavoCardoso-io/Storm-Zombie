@@ -16,7 +16,7 @@ public class JoystickPlayerExample : MonoBehaviour
     public void LateUpdate()
     {
         rb.velocity = new Vector3(variableJoystick.Horizontal * velocidade, variableJoystick.Vertical * velocidade, rb.velocity.x);
-        //rb.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * velocidade, Input.GetAxisRaw("Vertical") * velocidade, rb.velocity.x);
+        rb.velocity = new Vector3(Input.GetAxisRaw("Horizontal") * velocidade, Input.GetAxisRaw("Vertical") * velocidade, rb.velocity.x);
         if (variableJoystick.Horizontal < 0f || Input.GetAxisRaw("Horizontal") < 0f )
         {
             Vector3 temp = transform.localScale;

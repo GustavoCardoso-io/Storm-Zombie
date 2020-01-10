@@ -20,7 +20,6 @@ public class GunsShotngScript : MonoBehaviour
         if (dw.weaponAtual.bulletAtual > 0)
         {
             Instantiate(projetil, spawnPosition.transform.position, Quaternion.identity);
-            Debug.Log(dw.weaponAtual.bulletAtual);
             dw.weaponAtual.bulletAtual -= 1;
             sw.SetUiInteraction();
         }

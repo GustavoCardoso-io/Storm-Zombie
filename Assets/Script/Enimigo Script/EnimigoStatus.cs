@@ -11,7 +11,8 @@ public class EnimigoStatus : MonoBehaviour
     public int Vida { get => vida; set => vida = value; }
     public float VelocidadeEnimgo { get => velocidadeEnimgo; set => velocidadeEnimgo = value; }
     private void Awake()
-    {
+    { 
+        vida =  Random.Range(1,10);
         MakeInstance();
         dataPlayer = GameObject.FindGameObjectWithTag("DataPlayer").GetComponent<DataPlayer>();
     }

@@ -4,24 +4,37 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public GameObject player = null;
-
-    public Vector3 velocity = Vector3.zero;
-
-    float dampTime = 0.15f;
-     
-    public Vector2 offset;
-    // Start is called before the first frame update
+    public float interpVelocity;
+    public float minDistance;
+    public float followDistance;
+    public GameObject target;
+    public Vector3 offset;
+    public float speed = 15f;
+    Vector3 targetPos;
+    // Use this for initialization
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        offset = player.transform.position - this.transform.position;
+
+        target = GameObject.FindGameObjectWithTag("Player");
+        targetPos = transform.position;
     }
+
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        //this.transform.position = new Vector3(player.transform.position.x + offset.x, player.transform.position.y + offset.y, this.transform.position.z);
-        Vector3 destination = new Vector3(player.transform.position.x, player.transform.position.y, this.transform.position.z);
-        this.transform.position =  Vector3.SmoothDamp(this.transform.position, destination, ref velocity, dampTime);
+        if (target)
+        {
+            Vector3 posNoZ = transform.position;
+            posNoZ.z = target.transform.position.z;
+
+            Vector3 targetDirection = (target.transform.position - posNoZ);
+
+            interpVelocity = targetDirection.magnitude * speed;
+
+            targetPos = transform.position + (targetDirection.normalized * interpVelocity * Time.deltaTime);
+
+            transform.position = Vector3.Lerp(transform.position, targetPos + offset, 0.25f);
+
+        }
     }
 }

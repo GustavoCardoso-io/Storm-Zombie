@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class ProjetilScript : MonoBehaviour
 {
-     private float velocidadeProjetil = 100.0f;
+     private float velocidadeProjetil = 250.0f;
     private void Start()
     {
         Transform player;
@@ -25,7 +25,7 @@ public class ProjetilScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "Enimigo" || other.gameObject.tag == "ForaDoMapa")
-        {
+        {    
             Destroy(this.gameObject);
         }    
     }

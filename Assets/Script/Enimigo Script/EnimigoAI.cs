@@ -1,49 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Pathfinding;
 public class EnimigoAI : MonoBehaviour
 {
-    public GameObject player = null;
-    public Transform goalPlayer = null;
-    float speed = 0.5f;
-    float maxSpeed = 1.0f;
-    float acceleration = 0.1f;
-    float minSpeed = 0.2f;
-    public float accuaracy = 2.8f;
+    public AIPath aIPath;
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        goalPlayer = player.GetComponent<Transform>();
+        aIPath = this.GetComponent<AIPath>();
     }
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
-        Vector3 lookAtGoal = goalPlayer.position;
-        Vector3 direction = lookAtGoal - this.transform.position;
-
-        if (direction.magnitude > accuaracy)
+        if (aIPath.desiredVelocity.x >= 0.1f)
         {
-            speed = Mathf.Clamp(speed + (acceleration * Time.deltaTime), minSpeed, maxSpeed);
-            this.transform.Translate(direction.x * speed * Time.deltaTime, direction.y * speed * Time.deltaTime, 0);
+            this.transform.localScale = new Vector3(4f, 4f, 1f);
         }
-        //else
-        //{
-        // float positionRondomX = Random.Range(1.0f, 3.0f);
-        //float positionRondomY = Random.Range(1.0f, 3.0f);
-
-        // this.transform.Translate(positionRondomX * speed  * Time.deltaTime ,positionRondomY * speed * Time.deltaTime,0);
-        // }
-        if (direction.x >= 0)
+        else if (aIPath.desiredVelocity.x <= -0.1f)
         {
-            Vector3 temp = transform.localScale;
-            temp.x = 4.0f;
-            transform.localScale = temp;
-        }
-        else
-        {
-            Vector3 temp = transform.localScale;
-            temp.x = -4.0f;
-            transform.localScale = temp;
+            this.transform.localScale = new Vector3(-4f, 4f, 1f);
         }
     }
 }
