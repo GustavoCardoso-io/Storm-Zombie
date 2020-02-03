@@ -1380,7 +1380,7 @@ namespace Pathfinding {
 				throw e;
 			} finally {
 				EditorUtility.ClearProgressBar();
-			}
+			}	
 		}
 
 		/// <summary>Searches in the current assembly for GraphEditor and NavGraph types</summary>

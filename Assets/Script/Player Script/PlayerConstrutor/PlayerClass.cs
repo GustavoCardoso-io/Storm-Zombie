@@ -6,4 +6,6 @@ using UnityEngine;
 public class Player
 {
     public int pontosPlayer;
+    public float pontosDeVida;
+
 }
